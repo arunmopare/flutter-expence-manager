@@ -6,7 +6,8 @@ class NewTransaction extends StatefulWidget {
   NewTransaction(this.addTx);
 
   @override
-  _NewTransactionState createState() => _NewTransactionState();
+  _NewTransactionState createState() =>
+      _NewTransactionState();
 }
 
 class _NewTransactionState extends State<NewTransaction> {
@@ -22,6 +23,7 @@ class _NewTransactionState extends State<NewTransaction> {
       return;
     }
     widget.addTx(enteredTitle, enteredAmount);
+    Navigator.of(context).pop();
   }
 
   @override
@@ -55,7 +57,8 @@ class _NewTransactionState extends State<NewTransaction> {
             ),
             FlatButton(
               child: Text('Add Transaction'),
-              textColor: Colors.purple,
+              textColor:
+                  Theme.of(context).accentColor,
               onPressed: submitData,
             )
           ],

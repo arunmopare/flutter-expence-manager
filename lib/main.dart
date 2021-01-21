@@ -14,7 +14,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Personal Expenses',
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+        accentColor: Colors.black,
+        fontFamily: 'OpenSans',
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+                title: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold
+                ),
+              ),
+        ),
+      ),
       home: MyHomePage(),
     );
   }
@@ -33,16 +47,16 @@ class _MyHomePageState extends State<MyHomePage> {
   final amountController = TextEditingController();
 
   final List<Transaction> _userTranactions = [
-    Transaction(
-        id: "t1",
-        title: "New Shoes",
-        amount: 69.99,
-        date: DateTime.now()),
-    Transaction(
-        id: "t2",
-        title: "New Boots",
-        amount: 44.99,
-        date: DateTime.now())
+    // Transaction(
+    //     id: "t1",
+    //     title: "New Shoes",
+    //     amount: 69.99,
+    //     date: DateTime.now()),
+    // Transaction(
+    //     id: "t2",
+    //     title: "New Boots",
+    //     amount: 44.99,
+    //     date: DateTime.now())
   ];
   void _addNewTranaction(String title, double amount) {
     final newTx = Transaction(
@@ -55,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _userTranactions.add(newTx);
     });
   }
-
+  
   void startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
         context: ctx,
@@ -68,7 +82,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Expence Manager"),
+        title: Text(
+          "Personal Expences",
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
